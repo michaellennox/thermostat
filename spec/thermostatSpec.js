@@ -79,4 +79,33 @@ describe('Thermostat', function() {
       expect(thermostat.resetButton()).toEqual(20);
     });
   });
+
+  describe('energy usage', function() {
+    it('green when usage is below 18', function() {
+      thermostat.downButton();
+      thermostat.downButton();
+      thermostat.downButton();
+      expect(thermostat.energyUsage()).toEqual('Green');
+    });
+
+    it('yellow when usage is between 18 and 25', function() {
+      expect(thermostat.energyUsage()).toEqual('Yellow');
+    });
+
+    it('red when usage is above 25', function() {
+      thermostat.upButton();
+      thermostat.upButton();
+      thermostat.upButton();
+      thermostat.upButton();
+      thermostat.upButton();      
+      expect(thermostat.energyUsage()).toEqual('Red');
+    });
+  });
 });
+
+
+
+
+
+
+
