@@ -3,8 +3,8 @@ function Thermostat(){
 
 	this.temp = 20;
 	this.minTemp = 10;
-
 	this.isPowerSaving = true;
+
 
 };
 
@@ -39,3 +39,19 @@ Thermostat.prototype.togglePowerSave = function(){
 Thermostat.prototype.resetTemp = function() {
 	this.temp = 20;
 };
+
+Thermostat.prototype.displayColour = function() {
+	if(this.temp>=25){
+		return "red";
+	} else if (this.temp>=18) {
+		return "yellow";
+	} else {
+		return "green";
+	}
+};
+
+
+
+
+
+

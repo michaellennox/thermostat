@@ -77,6 +77,24 @@ describe("Thermostat", function() {
 		});
 	});
 
+	describe("#displayColour", function(){
+
+		it("Returns red when temp is at or over 25", function(){
+			thermostat.temp = 25;
+			expect(thermostat.displayColour()).toEqual("red");
+		});
+
+		it("Returns yellow when temp is between 18 to 24", function(){
+			thermostat.temp = 19;
+			expect(thermostat.displayColour()).toEqual("yellow");
+		});
+
+		it("Returns green when temp is below 18", function(){
+			thermostat.temp = 15;
+			expect(thermostat.displayColour()).toEqual("green");
+		});
+
+	});
 
 });
 
