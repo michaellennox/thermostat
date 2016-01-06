@@ -20,8 +20,9 @@ Thermostat.prototype.down = function(){
 
 
 Thermostat.prototype.maxTemp = function(){
-	return 25;
+	return this.isPowerSaving ? 25 : 32;
 };
+
 
 Thermostat.prototype.togglePowerSave = function(){
 	this.isPowerSaving ? this.isPowerSaving=false : this.isPowerSaving=true;

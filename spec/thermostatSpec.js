@@ -41,9 +41,15 @@ describe("Thermostat", function() {
 	});
 
 	describe("#maxTemp", function(){
-		it("Returns 25 when power saving is on", function(){
+		it("Returns 25 when isPowerSaving is true", function(){
 			expect(thermostat.maxTemp()).toEqual(25)
 		});
+
+		it("Returns 32 when isPowerSaving is false", function(){
+			thermostat.togglePowerSave();
+			expect(thermostat.maxTemp()).toEqual(32)
+		});
+
 	});
 
 	describe("#togglePowerSave", function(){
