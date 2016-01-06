@@ -1,6 +1,6 @@
 function Thermostat() {
   this.degrees = 20
-  // const MIN_TEMP = 10;
+  this.powerSaving = true
 };
 
 Thermostat.prototype.currentTemp = function() {
@@ -8,7 +8,15 @@ Thermostat.prototype.currentTemp = function() {
 };
 
 Thermostat.prototype.upButton = function() {
-  return this.degrees += 1;
+  if (this.powerSaving === true && this.degrees > 25) {
+    throw new Error('Temperature cannot exceed 25');
+  }
+  if (this.powerSaving === false && this.degrees > 32) {
+    throw new Error('Temperature cannot exceed 32');
+  }
+  else {
+    return this.degrees += 1;
+  }
 };
 
 Thermostat.prototype.downButton = function() {
@@ -18,4 +26,12 @@ Thermostat.prototype.downButton = function() {
   else {
     return this.degrees -= 1;
   }
+};
+
+Thermostat.prototype.powerSavingStatus = function() {
+  return this.powerSaving;
+};
+
+Thermostat.prototype.powerSavingSwitch = function() {
+  this.powerSaving = false;
 };

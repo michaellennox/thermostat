@@ -34,4 +34,35 @@ describe('Thermostat', function() {
       expect(function(){ thermostat.downButton(); }).toThrowError('Temperature cannot fall below 10');
     });
   });
+
+  describe('power saving mode', function() {
+    it('defaults to on', function() {
+      expect(thermostat.powerSavingStatus()).toBe(true)
+    });
+
+    describe('when on', function() {
+      it('has max temperature of 25', function() {
+        do {
+          thermostat.upButton();
+        }
+        while (thermostat.degrees <= 25);
+        expect(function(){ thermostat.upButton(); }).toThrowError('Temperature cannot exceed 25');
+      });
+    });
+
+    describe('when off', function() {
+      it('switch power saving mode', function() {
+        thermostat.powerSavingSwitch();
+        expect(thermostat.powerSavingStatus()).toBe(false);
+      });
+      it('has max temperature of 32', function() {
+        thermostat.powerSavingSwitch();
+        do {
+          thermostat.upButton();
+        }
+        while (thermostat.degrees <= 32);
+        expect(function(){ thermostat.upButton(); }).toThrowError('Temperature cannot exceed 32');
+      });
+    });
+  });
 });
