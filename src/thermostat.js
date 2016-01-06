@@ -1,4 +1,3 @@
-
 function Thermostat(){
 	this.temp = 20;
 	this.minTemp = 10;
