@@ -20,6 +20,13 @@ describe("Thermostat", function() {
 		});
 	});
 
-	
+	describe("#down", function(){
+
+		it("Decreases the temp by one", function(){
+			thermostat.down();
+			expect(thermostat.temp).toEqual(19);
+		});
+
+	});
 
 });
