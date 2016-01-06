@@ -2,29 +2,40 @@
 function Thermostat(){
 
 	this.temp = 20;
-	this.mintemp = 10;
+	this.minTemp = 10;
+
 	this.isPowerSaving = true;
 
 };
 
 
 Thermostat.prototype.up = function(){
+	if(this.temp===this._maxTemp()) throw "It's too hot already!";
 	this.temp++;
 };
 
 
 Thermostat.prototype.down = function(){
-	if(this.temp===this.mintemp) throw "It's wayyyy too cold for that. Go back to Canada"
+	if(this.temp===this.minTemp) throw "It's wayyyy too cold for that. Go back to Canada";
 	this.temp--;
 };
 
 
-Thermostat.prototype.maxTemp = function(){
+Thermostat.prototype._maxTemp = function(){
 	return this.isPowerSaving ? 25 : 32;
 };
 
 
 Thermostat.prototype.togglePowerSave = function(){
-	this.isPowerSaving ? this.isPowerSaving=false : this.isPowerSaving=true;
+	if(this.isPowerSaving){
+		this.isPowerSaving=false;
+	} else {
+		if (this.temp > 25) this.temp = 25;
+		this.isPowerSaving=true;
+	} 
 
+};
+
+Thermostat.prototype.resetTemp = function() {
+	this.temp = 20;
 };

@@ -23,8 +23,16 @@ describe("Thermostat", function() {
 			expect(thermostat.temp).toEqual(21);
 		});
 
+		it("When power saving is on, it wont increase past 25", function(){
+			thermostat.temp = 25;
+			expect(function(){thermostat.up()}).toThrow("It's too hot already!");
+		});
 
-
+		it("When power saving is off, it wont increase past 32", function(){
+			thermostat.togglePowerSave();
+			thermostat.temp = 32;
+			expect(function(){thermostat.up()}).toThrow("It's too hot already!")
+		});
 	});
 
 	describe("#down", function(){
@@ -35,22 +43,11 @@ describe("Thermostat", function() {
 		});
 
 		it("Wont decrease past min temp", function(){
-			thermostat.temp = thermostat.mintemp;
+			thermostat.temp = thermostat.minTemp;
 			expect(function(){thermostat.down()}).toThrow("It's wayyyy too cold for that. Go back to Canada");
 		});
 	});
 
-	describe("#maxTemp", function(){
-		it("Returns 25 when isPowerSaving is true", function(){
-			expect(thermostat.maxTemp()).toEqual(25)
-		});
-
-		it("Returns 32 when isPowerSaving is false", function(){
-			thermostat.togglePowerSave();
-			expect(thermostat.maxTemp()).toEqual(32)
-		});
-
-	});
 
 	describe("#togglePowerSave", function(){
 		it("turns power saving false when true", function(){
@@ -63,7 +60,44 @@ describe("Thermostat", function() {
 			thermostat.togglePowerSave();
 			expect(thermostat.isPowerSaving).toBe(true);
 		});
+
+		it('sets temp to 25 if over 25 when toggling on', function(){
+			thermostat.togglePowerSave();
+			thermostat.temp = 30;
+			thermostat.togglePowerSave();
+			expect(thermostat.temp).toEqual(25);
+		});
+	});
+
+	describe("#resetTemp", function(){
+		it("Resets the temp to 20", function(){
+			thermostat.up();
+			thermostat.resetTemp();
+			expect(thermostat.temp).toEqual(20);
+		});
 	});
 
 
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
