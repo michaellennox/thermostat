@@ -12,12 +12,19 @@ describe("Thermostat", function() {
 		expect(thermostat.temp).toEqual(20);
 	});
 
+	it("Initializes with power saving true", function(){
+		expect(thermostat.isPowerSaving).toBe(true);
+	});
+
 	describe("#up", function(){
 
-		it("increases the temperature by one", function(){
+		it("Increases the temperature by one", function(){
 			thermostat.up();
 			expect(thermostat.temp).toEqual(21);
 		});
+
+
+
 	});
 
 	describe("#down", function(){
@@ -31,9 +38,26 @@ describe("Thermostat", function() {
 			thermostat.temp = thermostat.mintemp;
 			expect(function(){thermostat.down()}).toThrow("It's wayyyy too cold for that. Go back to Canada");
 		});
-
 	});
 
+	describe("#maxTemp", function(){
+		it("Returns 25 when power saving is on", function(){
+			expect(thermostat.maxTemp()).toEqual(25)
+		});
+	});
+
+	describe("#togglePowerSave", function(){
+		it("turns power saving false when true", function(){
+			thermostat.togglePowerSave();
+			expect(thermostat.isPowerSaving).toBe(false);
+		});
+
+		it("turns power saving true when false", function(){
+			thermostat.togglePowerSave();
+			thermostat.togglePowerSave();
+			expect(thermostat.isPowerSaving).toBe(true);
+		});
+	});
 
 
 });
