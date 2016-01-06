@@ -51,10 +51,17 @@ describe('Thermostat', function() {
     });
 
     describe('when off', function() {
+      it('switches back on', function() {
+        thermostat.powerSavingSwitch();
+        thermostat.powerSavingSwitch();
+        expect(thermostat.powerSavingStatus()).toBe(true);
+      });
+      
       it('switch off power saving mode', function() {
         thermostat.powerSavingSwitch();
         expect(thermostat.powerSavingStatus()).toBe(false);
       });
+
       it('has max temperature of 32', function() {
         thermostat.powerSavingSwitch();
         do {
