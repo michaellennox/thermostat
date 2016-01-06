@@ -8,10 +8,10 @@ $(document).ready(function() {
   };
 
   var togglePowerSaveUI = function() {
-    if ($powerSave.text() === 'PowerSave - On') {
-      $powerSave.text('PowerSave - Off');
+    if (thermostat.isPowerSaving) {
+      $powerSave.css('background-color', 'green');
     } else {
-      $powerSave.text('PowerSave - On');
+      $powerSave.css('background-color', 'red');
     }
   };
 

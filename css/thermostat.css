@@ -6,7 +6,10 @@ main {
   position: fixed;
   margin-top: -300px;
   margin-left: -400px;
-  border: 1px solid black;
+}
+
+button:focus {
+  outline: none;
 }
 
 #display {
@@ -25,4 +28,42 @@ main {
   position: relative;
   top: 50%;
   -webkit-transform: translateY(-100%);
+}
+
+.chevron {
+  font-size: 80px;
+  height: 80px;
+  width: 80px;
+  background: none;
+  border: none;
+  left: 353px;
+  position: absolute;
+}
+
+#up {
+  top: 130px;
+}
+
+#down {
+  bottom: 160px;
+}
+
+.trigger {
+  border: none;
+  height: 50px;
+  width: 50px;
+  border-radius: 25px;
+  position: absolute;
+}
+
+#reset {
+  background-color: orange;
+  top: 200px;
+  left: 280px;
+}
+
+#power-save {
+  background-color: green;
+  top: 380px;
+  left: 480px;
 }
