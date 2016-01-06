@@ -1,0 +1,28 @@
+main {
+  width: 800px;
+  height: 600px;
+  top: 50%;
+  left: 50%;
+  position: fixed;
+  margin-top: -300px;
+  margin-left: -400px;
+  border: 1px solid black;
+}
+
+#display {
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  top: 200px;
+  left: 300px;
+  background-color: green;
+  border-radius: 100px;
+}
+
+#temperature {
+  font-size: 75px;
+  text-align: center;
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-100%);
+}
