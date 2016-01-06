@@ -1,5 +1,6 @@
 function Thermostat() {
   this.degrees = 20
+  // const MIN_TEMP = 10;
 };
 
 Thermostat.prototype.currentTemp = function() {
@@ -11,5 +12,10 @@ Thermostat.prototype.upButton = function() {
 };
 
 Thermostat.prototype.downButton = function() {
-  return this.degrees -= 1;
+  if (this.degrees < 10) {
+    throw new Error('Temperature cannot fall below 10');
+  }
+  else {
+    return this.degrees -= 1;
+  }
 };

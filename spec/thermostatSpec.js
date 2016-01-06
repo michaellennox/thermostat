@@ -17,17 +17,21 @@ describe('Thermostat', function() {
       expect(thermostat.currentTemp()).toEqual(21);
     });
   });
-  
+
   describe('decrease temperature', function() {
     it('decreases temp by 1', function() {
       thermostat.downButton();
       expect(thermostat.currentTemp()).toEqual(19);
     });
   });
-  //
-  // describe('', function() {
-  //   it('', function() {
-  //
-  //   });
-  // });
+
+  describe('minimum temperature', function() {
+    it('has a minimum of 10 degrees', function() {
+      do {
+        thermostat.downButton();
+      }
+      while (thermostat.degrees >= 10);
+      expect(function(){ thermostat.downButton(); }).toThrowError('Temperature cannot fall below 10');
+    });
+  });
 });
