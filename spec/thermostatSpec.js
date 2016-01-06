@@ -45,13 +45,13 @@ describe('Thermostat', function() {
         do {
           thermostat.upButton();
         }
-        while (thermostat.degrees <= 25);
+        while (thermostat.degrees < 25);
         expect(function(){ thermostat.upButton(); }).toThrowError('Temperature cannot exceed 25');
       });
     });
 
     describe('when off', function() {
-      it('switch power saving mode', function() {
+      it('switch off power saving mode', function() {
         thermostat.powerSavingSwitch();
         expect(thermostat.powerSavingStatus()).toBe(false);
       });
@@ -60,9 +60,16 @@ describe('Thermostat', function() {
         do {
           thermostat.upButton();
         }
-        while (thermostat.degrees <= 32);
+        while (thermostat.degrees < 32);
         expect(function(){ thermostat.upButton(); }).toThrowError('Temperature cannot exceed 32');
       });
+    });
+  });
+
+  describe('reset button', function() {
+    it('resets back to 20', function() {
+      thermostat.upButton();
+      expect(thermostat.resetButton()).toEqual(20);
     });
   });
 });
