@@ -1,30 +1,23 @@
 
 function Thermostat(){
-
 	this.temp = 20;
 	this.minTemp = 10;
 	this.isPowerSaving = true;
-
-
-};
-
+}
 
 Thermostat.prototype.up = function(){
 	if(this.temp===this._maxTemp()) throw "It's too hot already!";
 	this.temp++;
 };
 
-
 Thermostat.prototype.down = function(){
 	if(this.temp===this.minTemp) throw "It's wayyyy too cold for that. Go back to Canada";
 	this.temp--;
 };
 
-
 Thermostat.prototype._maxTemp = function(){
 	return this.isPowerSaving ? 25 : 32;
 };
-
 
 Thermostat.prototype.togglePowerSave = function(){
 	if(this.isPowerSaving){
@@ -32,8 +25,7 @@ Thermostat.prototype.togglePowerSave = function(){
 	} else {
 		if (this.temp > 25) this.temp = 25;
 		this.isPowerSaving=true;
-	} 
-
+	}
 };
 
 Thermostat.prototype.resetTemp = function() {
@@ -49,9 +41,3 @@ Thermostat.prototype.displayColour = function() {
 		return "green";
 	}
 };
-
-
-
-
-
-

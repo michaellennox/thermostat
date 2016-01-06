@@ -1,12 +1,10 @@
 
 describe("Thermostat", function() {
-
 	var thermostat;
 
 	beforeEach(function(){
 		thermostat = new Thermostat();
 	});
-
 
 	it("Initializes with a temp of 20 degrees", function(){
 		expect(thermostat.temp).toEqual(20);
@@ -17,7 +15,6 @@ describe("Thermostat", function() {
 	});
 
 	describe("#up", function(){
-
 		it("Increases the temperature by one", function(){
 			thermostat.up();
 			expect(thermostat.temp).toEqual(21);
@@ -25,18 +22,17 @@ describe("Thermostat", function() {
 
 		it("When power saving is on, it wont increase past 25", function(){
 			thermostat.temp = 25;
-			expect(function(){thermostat.up()}).toThrow("It's too hot already!");
+			expect(function(){thermostat.up();}).toThrow("It's too hot already!");
 		});
 
 		it("When power saving is off, it wont increase past 32", function(){
 			thermostat.togglePowerSave();
 			thermostat.temp = 32;
-			expect(function(){thermostat.up()}).toThrow("It's too hot already!")
+			expect(function(){thermostat.up();}).toThrow("It's too hot already!");
 		});
 	});
 
 	describe("#down", function(){
-
 		it("Decreases the temp by one", function(){
 			thermostat.down();
 			expect(thermostat.temp).toEqual(19);
@@ -44,10 +40,9 @@ describe("Thermostat", function() {
 
 		it("Wont decrease past min temp", function(){
 			thermostat.temp = thermostat.minTemp;
-			expect(function(){thermostat.down()}).toThrow("It's wayyyy too cold for that. Go back to Canada");
+			expect(function(){thermostat.down();}).toThrow("It's wayyyy too cold for that. Go back to Canada");
 		});
 	});
-
 
 	describe("#togglePowerSave", function(){
 		it("turns power saving false when true", function(){
@@ -78,7 +73,6 @@ describe("Thermostat", function() {
 	});
 
 	describe("#displayColour", function(){
-
 		it("Returns red when temp is at or over 25", function(){
 			thermostat.temp = 25;
 			expect(thermostat.displayColour()).toEqual("red");
@@ -93,29 +87,5 @@ describe("Thermostat", function() {
 			thermostat.temp = 15;
 			expect(thermostat.displayColour()).toEqual("green");
 		});
-
 	});
-
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
