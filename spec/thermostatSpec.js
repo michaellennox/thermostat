@@ -27,6 +27,13 @@ describe("Thermostat", function() {
 			expect(thermostat.temp).toEqual(19);
 		});
 
+		it("Wont decrease past min temp", function(){
+			thermostat.temp = thermostat.mintemp;
+			expect(function(){thermostat.down()}).toThrow("It's wayyyy too cold for that. Go back to Canada");
+		});
+
 	});
+
+
 
 });
