@@ -1,5 +1,30 @@
 var thermostat = new Thermostat();
-var $powerSave = $('#power-save');
+
+$(document).ready(function() {
+  var $powerSave = $('#power-save');
+  updateData();
+
+  $('#power-save').on('click', function() {
+    thermostat.togglePowerSave();
+    togglePowerSaveUI();
+    updateData();
+  });
+
+  $('#up').on('click', function() {
+    thermostat.up();
+    updateData();
+  });
+
+  $('#down').on('click', function() {
+    thermostat.down();
+    updateData();
+  });
+
+  $('#reset').on('click', function() {
+    thermostat.resetTemp();
+    updateData();
+  });
+});
 
 function updateData() {
   $('#temperature').text(thermostat.temp);
@@ -8,31 +33,8 @@ function updateData() {
 
 function togglePowerSaveUI() {
   if (thermostat.isPowerSaving) {
-    $powerSave.css('background-color', 'green');
+    $('#power-save').css('background-color', 'green');
   } else {
-    $powerSave.css('background-color', 'red');
+    $('#power-save').css('background-color', 'red');
   }
 }
-
-$(document).on('click', updateData());
-
-$(document).ready(function() {
-  updateData();
-
-  $powerSave.on('click', function() {
-    thermostat.togglePowerSave();
-    togglePowerSaveUI();
-  });
-
-  $('#up').on('click', function() {
-    thermostat.up();
-  });
-
-  $('#down').on('click', function() {
-    thermostat.down();
-  });
-
-  $('#reset').on('click', function() {
-    thermostat.resetTemp();
-  });
-});
