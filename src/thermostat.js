@@ -1,7 +1,7 @@
 function Thermostat() {
-  this.degrees = 20
-  this.powerSaving = true
-};
+  this.degrees = 20;
+  this.powerSaving = true;
+}
 
 Thermostat.prototype.currentTemp = function() {
   return this.degrees;
@@ -28,16 +28,12 @@ Thermostat.prototype.downButton = function() {
   }
 };
 
-Thermostat.prototype.powerSavingStatus = function() {
-  return this.powerSaving;
-};
-
 Thermostat.prototype.powerSavingSwitch = function() {
-  return this.powerSaving = !this.powerSaving;
+  this.powerSaving = !this.powerSaving;
 };
 
 Thermostat.prototype.resetButton = function () {
-  return this.degrees = 20;
+  this.degrees = 20;
 };
 
 Thermostat.prototype.energyUsage = function() {

@@ -7,8 +7,7 @@ describe('Thermostat', function() {
 
   describe('starting temperature for thermostat', function() {
     it('defaults to 20 degrees', function() {
-      expect(thermostat.currentTemp()).toEqual(20)
-    });
+      expect(thermostat.currentTemp()).toEqual(20); });
   });
 
   describe('increase temperature', function() {
@@ -37,7 +36,7 @@ describe('Thermostat', function() {
 
   describe('power saving mode', function() {
     it('defaults to on', function() {
-      expect(thermostat.powerSavingStatus()).toBe(true)
+      expect(thermostat.powerSaving).toBe(true);
     });
 
     describe('when on', function() {
@@ -54,20 +53,19 @@ describe('Thermostat', function() {
       it('switches back on', function() {
         thermostat.powerSavingSwitch();
         thermostat.powerSavingSwitch();
-        expect(thermostat.powerSavingStatus()).toBe(true);
+        expect(thermostat.powerSaving).toBe(true);
       });
       
       it('switch off power saving mode', function() {
         thermostat.powerSavingSwitch();
-        expect(thermostat.powerSavingStatus()).toBe(false);
+        expect(thermostat.powerSaving).toBe(false);
       });
 
       it('has max temperature of 32', function() {
         thermostat.powerSavingSwitch();
-        do {
+        while (thermostat.degrees < 32) {
           thermostat.upButton();
         }
-        while (thermostat.degrees < 32);
         expect(function(){ thermostat.upButton(); }).toThrowError('Temperature cannot exceed 32');
       });
     });
@@ -76,15 +74,16 @@ describe('Thermostat', function() {
   describe('reset button', function() {
     it('resets back to 20', function() {
       thermostat.upButton();
-      expect(thermostat.resetButton()).toEqual(20);
+      thermostat.resetButton();
+      expect(thermostat.degrees).toEqual(20);
     });
   });
 
   describe('energy usage', function() {
     it('green when usage is below 18', function() {
-      thermostat.downButton();
-      thermostat.downButton();
-      thermostat.downButton();
+      while (thermostat.degrees > 17) {
+          thermostat.downButton();
+        }   
       expect(thermostat.energyUsage()).toEqual('Green');
     });
 
@@ -93,11 +92,9 @@ describe('Thermostat', function() {
     });
 
     it('red when usage is above 25', function() {
-      thermostat.upButton();
-      thermostat.upButton();
-      thermostat.upButton();
-      thermostat.upButton();
-      thermostat.upButton();      
+      while (thermostat.degrees < 25) {
+          thermostat.upButton();
+        }      
       expect(thermostat.energyUsage()).toEqual('Red');
     });
   });
