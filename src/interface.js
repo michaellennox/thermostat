@@ -2,6 +2,16 @@ var thermostat = new Thermostat();
 
 function updateData() {
   $("#degrees").text(thermostat.degrees);
+  $("#temp-display").css("background-color", thermostat.energyUsage());
+}
+
+function powerSavingUI() {
+  if(thermostat.powerSaving) {
+    $("#power-saving-switch").css("background-color", "");
+  }
+  else {
+    $("#power-saving-switch").css("background-color", "grey");
+  }
 }
 
 $(document).ready(function() {
@@ -24,5 +34,6 @@ $(document).ready(function() {
   $("#power-saving-switch").click(function() {
     thermostat.powerSavingSwitch();
     updateData();
+    powerSavingUI();
   });
 });
