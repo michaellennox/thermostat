@@ -17,7 +17,7 @@ function togglePowerSaveUI() {
 $(document).on('click', updateData());
 
 $(document).ready(function() {
-  updateInfo();
+  updateData();
 
   $powerSave.on('click', function() {
     thermostat.togglePowerSave();
