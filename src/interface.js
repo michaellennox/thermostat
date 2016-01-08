@@ -2,12 +2,6 @@ var thermostat = new Thermostat();
 
 $(document).ready(function() {
   var $powerSave = $('#power-save');
-  var $up = $('#up');
-  var $down = $('#down');
-  var $reset = $('#reset');
-  var $temperature = $('#temperature');
-  var $display = $('#display');
-
   updateData();
 
   $powerSave.on('click', function() {
@@ -16,24 +10,24 @@ $(document).ready(function() {
     updateData();
   });
 
-  $up.on('click', function() {
+  $('#up').on('click', function() {
     thermostat.up();
     updateData();
   });
 
-  $down.on('click', function() {
+  $('#down').on('click', function() {
     thermostat.down();
     updateData();
   });
 
-  $reset.on('click', function() {
+  $('#reset').on('click', function() {
     thermostat.resetTemp();
     updateData();
   });
 
   function updateData() {
-    $temperature.text(thermostat.temp);
-    $display.css('background-color', thermostat.displayColour());
+    $('#temperature').text(thermostat.temp);
+    $('#display').css('background-color', thermostat.displayColour());
   }
 
   function togglePowerSaveUI() {
