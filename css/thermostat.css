@@ -28,6 +28,7 @@ button:focus {
   position: relative;
   top: 50%;
   -webkit-transform: translateY(-100%);
+  transform: translateY(-100%);
 }
 
 .chevron {
