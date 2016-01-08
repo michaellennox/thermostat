@@ -12,6 +12,10 @@ main {
   margin-left: -400px;
 }
 
+button {
+  cursor: pointer;
+}
+
 button:focus {
   outline: none;
 }
