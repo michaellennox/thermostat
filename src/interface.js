@@ -49,8 +49,7 @@ $(document).ready(function() {
   function getWeatherData(city) {
     $.getJSON(climateAPI + city + climateAPPID, function(data) {
       $('#weather-location').text('Weather in ' + data.name + ', ' + data.sys.country);
-      $('#weather-temp').text('Temperature: ' + Math.round(data.main.temp - 273.15) + 'C');
-      $('#weather-weather').text('Weather: ' + data.weather[0].main);
+      $('#weather-temp').text(Math.round(data.main.temp - 273.15) + 'C  ').append('<img src="http://openweathermap.org/img/w/' + data.weather[0].icon +'.png">');
     });
   }
 });

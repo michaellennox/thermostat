@@ -35,7 +35,7 @@ Thermostat.prototype.displayColour = function() {
   if(this.temp>=25){
     return "red";
   } else if (this.temp>=18) {
-    return "yellow";
+    return "orange";
   } else {
     return "green";
   }

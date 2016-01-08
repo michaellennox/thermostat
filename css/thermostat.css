@@ -112,3 +112,7 @@ button:focus {
   display: block;
   margin-top: 5px;
 }
+
+#weather-data p, img{
+  display: inline-block;
+}
