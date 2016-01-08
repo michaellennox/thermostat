@@ -3,10 +3,10 @@ var climateAPI = "http://api.openweathermap.org/data/2.5/weather?q=";
 var climateAPPID = "&APPID=c55052d49a5b3f3706243775f1783525";
 
 $(document).ready(function() {
-  var $powerSave = $('#power-save');
+  var $powerSave = $('#power-save-status');
   updateData();
 
-  $powerSave.on('click', function() {
+  $('#power-save').on('click', function() {
     thermostat.togglePowerSave();
     togglePowerSaveUI();
     updateData();
@@ -27,13 +27,15 @@ $(document).ready(function() {
     updateData();
   });
 
-  $('#get-weather-data').on('click', function() {
-    getWeatherData();
+  $('#get-weather-data').on('submit', function(e) {
+    e.preventDefault();
+    var city = $('#city').val();
+    getWeatherData(city);
   });
 
   function updateData() {
     $('#temperature').text(thermostat.temp);
-    $('#display').css('background-color', thermostat.displayColour());
+    $('#temperature').css('color', thermostat.displayColour());
   }
 
   function togglePowerSaveUI() {
@@ -44,9 +46,9 @@ $(document).ready(function() {
     }
   }
 
-  function getWeatherData() {
-    $.getJSON(climateAPI + 'London' + climateAPPID, function(data) {
-      $('#weather-location').text('Weather in London, UK');
+  function getWeatherData(city) {
+    $.getJSON(climateAPI + city + climateAPPID, function(data) {
+      $('#weather-location').text('Weather in ' + data.name + ', ' + data.sys.country);
       $('#weather-temp').text('Temperature: ' + Math.round(data.main.temp - 273.15) + 'C');
       $('#weather-weather').text('Weather: ' + data.weather[0].main);
     });

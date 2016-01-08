@@ -1,3 +1,7 @@
+body {
+  font-family: 'Gravitas One', cursive;
+}
+
 main {
   width: 800px;
   height: 600px;
@@ -6,24 +10,42 @@ main {
   position: fixed;
   margin-top: -300px;
   margin-left: -400px;
+  border: 1px solid black;
 }
 
 button:focus {
   outline: none;
 }
 
+#thermo-block {
+  width: 300px;
+  height: 300px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: black;
+}
+
+#thermo-block i {
+  font-size: 300px;
+  height: 300px;
+  width: 300px;
+  color: white;
+  left: 20px;
+  top: 10px;
+  position: relative;
+}
+
 #display {
-  width: 200px;
+  width: 300px;
   height: 200px;
   position: absolute;
-  top: 200px;
-  left: 300px;
-  background-color: green;
-  border-radius: 100px;
+  top: 300px;
+  right: 0;
 }
 
 #temperature {
-  font-size: 75px;
+  font-size: 100px;
   text-align: center;
   position: relative;
   top: 50%;
@@ -31,40 +53,62 @@ button:focus {
   transform: translateY(-100%);
 }
 
+#controls {
+  position: absolute;
+  top: 500px;
+  right: 0;
+  height: 100px;
+  width: 300px;
+}
+
 .chevron {
-  font-size: 80px;
-  height: 80px;
-  width: 80px;
+  font-size: 60px;
+  height: 60px;
+  width: 60px;
   background: none;
   border: none;
-  left: 353px;
   position: absolute;
 }
 
 #up {
-  top: 130px;
+  right: 40px;
 }
 
 #down {
-  bottom: 160px;
+  left: 40px;
 }
 
 .trigger {
   border: none;
-  height: 50px;
-  width: 50px;
-  border-radius: 25px;
+  height: 100px;
+  width: 250px;
+  font-size: 40px;
+  line-height: 100px;
   position: absolute;
+  background: none;
+  font-weight: bold;
+  right: 300px;
+  text-align: right;
 }
 
 #reset {
-  background-color: orange;
-  top: 200px;
-  left: 280px;
+  bottom: 100px;
+}
+
+#power-save-status {
+  bottom: 35px;
+  left: 10px;
+  width: 260px;
+  height: 20px;
+  position: absolute;
+  background-color: green;
 }
 
 #power-save {
-  background-color: green;
-  top: 380px;
-  left: 480px;
+  bottom: 0;
+}
+
+#get-weather-data input {
+  display: block;
+  margin-top: 5px;
 }

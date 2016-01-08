@@ -6,6 +6,7 @@
   <title>Thermostat</title>
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Gravitas+One" rel="stylesheet">
   <link href="css/thermostat.css" rel="stylesheet">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
@@ -14,21 +15,32 @@
 </head>
 <body>
   <main role="thermostat">
-    <div id="display">
-      <h1 id="temperature"></h1>
-    </div>
-    <button id="up" class="chevron"><i class="fa fa-chevron-up"></i></button>
-    <button id="down" class="chevron"><i class="fa fa-chevron-down"></i></button>
-    <button id="reset" class="trigger">Reset</button>
-    <button id="power-save" class="trigger">Save</button>
     <div id="weather-display">
-      <button id="get-weather-data">Get Weather Data</button>
+      <form id="get-weather-data">
+        <label for="city">City:</label>
+        <input type="text" name="city" placeholder="London" id="city">
+        <input type="submit" value="Get Weather Data" id="get-weather-data-submit">
+      </form>
       <div id="weather-data">
         <h2 id="weather-location"></h2>
         <p id="weather-temp"></p>
         <p id="weather-weather"></p>
       </div>
     </div>
+
+    <div id="thermo-block"><i class="fa fa-power-off"></i></div>
+    <div id="display">
+      <h1 id="temperature"></h1>
+    </div>
+
+    <div id="controls">
+      <button id="up" class="chevron"><i class="fa fa-plus"></i></button>
+      <button id="down" class="chevron"><i class="fa fa-minus"></i></button>
+    </div>
+
+    <button id="reset" class="trigger">Reset</button>
+    <div id="power-save-status"></div>
+    <button id="power-save" class="trigger">Power Save</button>
   </main>
 </body>
 </html>
