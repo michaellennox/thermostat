@@ -5,6 +5,7 @@ var climateAPPID = "&APPID=c55052d49a5b3f3706243775f1783525";
 $(document).ready(function() {
   var $powerSave = $('#power-save-status');
   updateData();
+  getWeatherData("London");
 
   $('#power-save').on('click', function() {
     thermostat.togglePowerSave();
@@ -29,7 +30,7 @@ $(document).ready(function() {
 
   $('#get-weather-data').on('submit', function(e) {
     e.preventDefault();
-    var city = $('#city').val();
+    var city = $('#weather-city').val();
     getWeatherData(city);
   });
 
@@ -48,8 +49,20 @@ $(document).ready(function() {
 
   function getWeatherData(city) {
     $.getJSON(climateAPI + city + climateAPPID, function(data) {
-      $('#weather-location').text('Weather in ' + data.name + ', ' + data.sys.country);
-      $('#weather-info').text(Math.round(data.main.temp - 273.15) + 'C  ').append('<img src="http://openweathermap.org/img/w/' + data.weather[0].icon +'.png">');
+      $('#weather-info').text(Math.round(data.main.temp - 273.15)).append('<small>C</small>');
+      $('#weather-data img').remove();
+      $('#weather-data').append('<img src="http://openweathermap.org/img/w/' + data.weather[0].icon +'.png">');
     });
   }
+
+  function resizeInput() {
+    if ($(this).val().length > 0) {
+      $(this).css('width', 'auto');
+      $(this).attr('size', $(this).val().length);
+    } else {
+        $(this).css('width', '0');
+    }
+  }
+
+  $('input[type="text"]').keyup(resizeInput).each(resizeInput);
 });

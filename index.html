@@ -16,15 +16,11 @@
 <body>
   <main role="thermostat">
     <div id="weather-display">
-      <h1>Weather</h1>
       <form id="get-weather-data" autocomplete="off">
-        <label for="city">City:</label>
-        <input type="text" name="city" placeholder="London" id="city">
-        <input type="submit" value="Get Weather Data" id="get-weather-data-submit">
+        <h2>Weather in <input type="text" name="city" value="London" id="weather-city"></h2>
       </form>
       <div id="weather-data">
-        <h2 id="weather-location"></h2>
-        <p id="weather-info"></p>
+        <h2 id="weather-info"></h2>
       </div>
     </div>
 

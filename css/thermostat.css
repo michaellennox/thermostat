@@ -10,7 +10,6 @@ main {
   position: fixed;
   margin-top: -300px;
   margin-left: -400px;
-  border: 1px solid black;
 }
 
 button:focus {
@@ -108,30 +107,22 @@ button:focus {
   bottom: 0;
 }
 
-#get-weather-data input {
-  display: block;
-  margin-top: 5px;
+input {
+  border: none;
+  outline: none;
+  background-color: #eee;
+  font-family: inherit;
+  font-size: inherit;
+  display: inline-block;
+  width: auto;
+  text-align: center;
 }
 
 #weather-display {
   position: absolute;
   left: 0;
-  top: 0;
+  top: 50px;
   width: 500px;
-  height: 400px;
+  height: 350px;
   text-align: center;
-}
-
-#weather-display h1 {
-  text-align: center;
-}
-
-#get-weather-data {
-  text-align: left;
-  position: relative;
-  left: 170px;
-}
-
-#weather-data p, img{
-  display: inline-block;
 }
