@@ -113,6 +113,25 @@ button:focus {
   margin-top: 5px;
 }
 
+#weather-display {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 500px;
+  height: 400px;
+  text-align: center;
+}
+
+#weather-display h1 {
+  text-align: center;
+}
+
+#get-weather-data {
+  text-align: left;
+  position: relative;
+  left: 170px;
+}
+
 #weather-data p, img{
   display: inline-block;
 }
